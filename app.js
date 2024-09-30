@@ -32,17 +32,42 @@ const asciiHeart = [
     " ⠙⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠋ ",
     "   ⠙⢿⣿⣿⣿⣿⣿⣿⣿⡿⠛⠁⠀",
     "     ⠉⢿⣿⣿⣿⠟⠋⠀",
-    "⠀      ⠙⠻⠁"
+    "⠀      ⠙⠻⠁",
 ]
 
 
 
-const animateByChart = (ms) => {
 
-}
+const animateByChart = (ms) => {
+    let lineaActual = 0;
+    let caracterActual =0;
+    const caracter = () =>{
+        if(lineaActual < asciiHeart.length){
+            const linea = asciiHeart[lineaActual].split('');
+
+        if (caracterActual < linea.length){
+            process.stdout.write(linea[caracterActual]);
+            caracterActual++;
+        }else{
+            console.log();
+            lineaActual++;
+            caracterActual = 0;
+        }
+        setTimeout(caracter,ms);
+    }
+};
+caracter();
+};
+
+
 
 const animateByLine = (ms) => {
-
+    //recorre lineas y
+    asciiHeart.forEach((line, heart) => {
+        setTimeout(() => {
+            console.log(line)
+        }, heart * ms)
+    })
 }
 
-// animateByChart()
+animateByChart(100)
